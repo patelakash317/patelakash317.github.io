@@ -58,70 +58,23 @@
     </style>
   </head>
   <body>
-    <h3>Welcome to WebDupe - Web Voice Action using Speech Plugin</h3>
-    <p>Kind of Google Duplex for Web</p>
-    <h5>Basic commands:</h5>
-    <p class="m-0">&nbsp; &nbsp;- <b>Stop listening</b>: To stop listening</p>
-    <p class="m-0">&nbsp; &nbsp;- <b>Clear</b>: To clear existing commands</p>
-    </div>
-
-    <br/>
-    <h5>Working/Setup:</h5>
-    <p class="m-0">
-      <b>Files [in same format]:</b><br/>
-      <b>CSS:</b> webdupe.css<br/>
-      <b>JS:</b> jquery-3.3.1.min.js, bootstrap.min.js, webdupe.js
-    </p>
+    <h3>Welcome to WebDupe.js - Web Voice Action using Speech Plugin</h3>
+    Starting using this plugin for free <b><a href="https://github.com/patelakash317/webdupe.js">Click here https://github.com/patelakash317/webdupe.js</a></b>
+    <br/><br/>
+    To test this plugin, press button at bottom right cornor of this page.
+    <br/><br/>
+    <b>After pressing:</b><br/>
+    Test 1: Say <b>"Tell me about this website"</b>
+    <br/><br/>
+    Test 2: Say <b>"Redirect me to contact page"</b>
+    <br/><br/>
+    Test 3: Say <b>"Go back to previous page"</b>
 
     <br/><br/>
-    <b>Variables [in same format]:</b><br/>
-    <p class="m-0">
-      &nbsp; &nbsp;- <b>action_block</b>: Config variable for setup<br/>
-      &nbsp; &nbsp; &nbsp; &nbsp;- <b>action_type</b>: Action type: redirect, call_function OR call_previous<br/><br/>
-      &nbsp; &nbsp; &nbsp; &nbsp;- <b>action_value</b>: <br/>
-      
-      &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;If <b>action_type = redirect</b> <br/>
-      &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- enter URL here, ex: http://example.com/about.html<br/><br/>
-
-      &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;If <b>action_type = call_function</b> <br/>
-      &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- enter function name, ex: speakAbout <small>[Note: without () function braces]</small><br/><br/>
-
-      &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;If <b>action_type = call_previous</b> <br/>
-      &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;- keep this empty<br/><br/><br/>
-    </p>
-
-    <h5>&nbsp; &nbsp;Sample</h5>
-    <code>
-      <pre>
-        let action_block = {
-          'contact,contact us': { // keywords for redirecting to contact page
-            action_type: 'redirect',
-            action_value: 'http://localhost/webspeechdemo/contact.html',
-          },
-          'about,info,about us': { // keywords to call "speakAbout" function on about recognisation
-            action_type: 'call_function', 
-            action_value: 'speakAbout',
-          },
-          'back,previous page': { // keywords to identify to go back
-            action_type: 'call_previous',
-            action_value: '',
-          },
-        };
-      </pre>
-    </code>
-
+    Likewise add any number of commands you want your users to get response of. 
     <br/>
-    <b>Specified functions [in same format]:</b><br/>
-    <p class="m-0">&nbsp; &nbsp;- <b>speakAbout</b>: As specified in above code, used to call when about is recognised <br/>&nbsp; &nbsp; &nbsp;<small>[Note: define function after defining variable "action_block"]</small></p>
-    <h5>&nbsp; &nbsp;Sample</h5>
-    <code>
-      <pre>
-        function speakAbout(){
-          console.log('speak about call function called');
-        }
-      </pre>
-    </code>
-    
+    Thank you for using this plugin.<br/>
+
 
     <div class="action_credits">
       <button class="btnca btn btn-primary" onclick="showCredits()">Actions</button>

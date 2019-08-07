@@ -5,8 +5,8 @@
 		<!-- http://localhost/webspeechdemo/webspeechdemo.html -->
 		<meta charset="utf-8">
 		<title>Web voice action plugin</title>
-		<link href="http://localhost/lastmessage/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://localhost/webspeechdemo/assets/main_voice_recogise/css/main_voice_recogise.css" rel="stylesheet">		
+		<link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/webdupe/css/webdupe.min.css" rel="stylesheet">
 	</head>
 	<body>
 		<h1>From here you can make contact</h1>
@@ -14,12 +14,12 @@
 		<h2>Thanks,</h2>
 		<h2>Akash Patel [@patelakash317]</h2>
 		<h2>Skyology Inc.</h2>
-		<a href="http://localhost/webspeechdemo/auto_voice_action_web.html">Go back</a>
+		<a href="https://patelakash317.github.io/webdupe">Go back</a>
 
-		<script type="text/javascript" src="http://localhost/lastmessage/assets/js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="http://localhost/lastmessage/assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="http://localhost/lastmessage/assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="http://localhost/webspeechdemo/assets/main_voice_recogise/js/main_voice_recogise.js"></script>
+		<script type="text/javascript" src="./assets/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./assets/webdupe/js/webdupe.min.js"></script>
     <!-- action functions -->
     <script>
       // request keywords
@@ -41,7 +41,7 @@
             //speakAboutUs(),
             'contact,contact us': {
               action_type: 'redirect',
-              action_value: 'http://localhost/webspeechdemo/contact.html',
+              action_value: 'https://patelakash317.github.io/webdupe/contact.html',
             },
             'about,info,about us': {
               action_type: 'call_function',
@@ -58,7 +58,44 @@
 
       function speakAbout(){
         console.log('speak about call function called');
+        var text = "This is a plugin which you can use it on your website to give your customers or users extra facility to get information about your website using voice actions or they can use it to redirect to some page very quickly, just by simply saying redirect me, to contact page.";
+        // var text = $('#message').val();
+        var msg = new SpeechSynthesisUtterance();
+        var voices = window.speechSynthesis.getVoices();
+        msg.voice = voices[4];
+        msg.rate = 10 / 10;
+        msg.pitch = 1;
+        // msg.voice = voices[$('#voices').val()];
+        // msg.rate = $('#rate').val() / 10;
+        // msg.pitch = $('#pitch').val();
+        msg.text = text;
+
+        msg.onend = function(e) {
+          console.log('Finished in ' + event.elapsedTime + ' seconds.');
+        };
+
+        speechSynthesis.speak(msg);
       }
+      $(function(){
+        // speech source: https://codepen.io/SteveJRobertson/pen/emGWaR
+        // support: https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
+        if ('speechSynthesis' in window) {
+          speechSynthesis.onvoiceschanged = function() {
+            // var $voicelist = $('#voices');
+
+            // if($voicelist.find('option').length == 0) {
+              // speechSynthesis.getVoices().forEach(function(voice, index) {
+              //   var $option = $('<option>')
+              //   .val(index)
+              //   .html(voice.name + (voice.default ? ' (default)' :''));
+
+              //   $voicelist.append($option);
+              // });
+            // }
+          }
+        } else {
+        }
+      });
     </script>
     <!-- action functions ends-->
 	</body>

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>WebDupe plugin</title>
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./assets/webdupe/css/webdupe.css" rel="stylesheet">
+    <link href="./assets/webdupe/css/webdupe.min.css" rel="stylesheet">
     <style>
       * {
         font-family: Verdana, Arial, sans-serif;
@@ -55,6 +55,15 @@
         top: 21px;
         border-radius: 0;
       }
+      .webdupenote{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        padding-left: 5px;
+        padding-bottom: 5px;
+        margin: 0;
+        background-color: #ffffff;
+      }
     </style>
   </head>
   <body>
@@ -69,12 +78,14 @@
     Test 2: Say <b>"Redirect me to contact page"</b>
     <br/><br/>
     Test 3: Say <b>"Go back to previous page"</b>
+    <br/><br/>
+    Test 4: Say <b>"I need some help"</b>
 
     <br/><br/>
     Likewise add any number of commands you want your users to get response of. 
     <br/>
     Thank you for using this plugin.<br/>
-
+    <p class="webdupenote">Quick Access Voice Keyboard Shortcut: Shift+S</p>
 
     <div class="action_credits">
       <button class="btnca btn btn-primary" onclick="showCredits()">Actions</button>
@@ -111,7 +122,7 @@
       // additional function ensd
     </script>
 
-    <script type="text/javascript" src="./assets/webdupe/js/webdupe.js"></script>
+    <script type="text/javascript" src="./assets/webdupe/js/webdupe.min.js"></script>
     <!-- action functions -->
     <script>
       // request keywords
@@ -129,44 +140,90 @@
           // };
 
         // specific
-          let action_block = {
-            //speakAboutUs(),
-            'contact,contact us': {
+          action_block = {
+            'show_status': false, // to show status, Quick, Speak now, Errors etc.
+            'contact,contact us': { // to redirect to contact page
               action_type: 'redirect',
               action_value: 'https://patelakash317.github.io/webdupe/contact.html',
             },
-            'about,info,about us': {
+            'about,info,about us': { // to speak about this website
               action_type: 'call_function',
               action_value: 'speakAbout',
               // action_value: 'callout/about',
             },
-            'back,previous page': {
+            'back,previous page': { // going back to previous page
               action_type: 'call_previous',
               action_value: '',
               // action_value: 'callout/about',
+            },
+            'need,some,help': { // i need some help
+              action_type: 'call_function',
+              action_value: 'speakWhatHelp',
             },
           };
       // request keywords ends
 
       function speakAbout(){
+        recognition.stop();
         console.log('speak about call function called');
         var text = "This is a plugin which you can use it on your website to give your customers or users extra facility to get information about your website using voice actions or they can use it to redirect to some page very quickly, just by simply saying redirect me, to contact page.";
+        speak(text);
+      }
+
+      function speakWhatHelp(){
+        recognition.stop();
+        console.log('speak about call function called');
+        var text = "Sure, I am here to help you. Tell me what kind of help do you need?";
+        speak(text);
+        
+        setTimeout(function(){
+          console.log('recognition');
+          if(!speaking){
+            startRecognizingManually(); // to start recognising again manually
+          }
+        }, 5000);  
+      }
+
+      let speaking = false;
+      function speak(text){
         // var text = $('#message').val();
         var msg = new SpeechSynthesisUtterance();
-        var voices = window.speechSynthesis.getVoices();
-        msg.voice = voices[4];
-        msg.rate = 10 / 10;
-        msg.pitch = 1;
-        // msg.voice = voices[$('#voices').val()];
-        // msg.rate = $('#rate').val() / 10;
-        // msg.pitch = $('#pitch').val();
-        msg.text = text;
+        var voices = window.speechSynthesis.getVoices(); // find your prefered language from this list
+        // console.log(voices); // uncomment this you will get the list in console, select one and pass it in below getLanguage function in second argument
+        let final_voices = getLanguage(voices, 'Google US English');
+        if(final_voices == 'not'){
+          console.log('No supporting language found.');
+          alert(text);
+        } else {
+          speaking = true;
+          // mentioned language supporting 
+          msg.voice = final_voices;
+          // voices[4]
+          msg.rate = 10 / 10;
+          msg.pitch = 1;
+          // msg.voice = voices[$('#voices').val()];
+          // msg.rate = $('#rate').val() / 10;
+          // msg.pitch = $('#pitch').val();
+          msg.text = text;
 
-        msg.onend = function(e) {
-          console.log('Finished in ' + event.elapsedTime + ' seconds.');
-        };
+          msg.onend = function(e) {
+            console.log('Finished in ' + event.elapsedTime + ' seconds.');
+            speaking = false;
+          };
 
-        speechSynthesis.speak(msg);
+          speechSynthesis.speak(msg);
+        }
+      }
+      function getLanguage(voices, language_name){
+        let found = 'not';
+        $.each(voices, function(index, value){
+          if(found == 'not'){
+            if(value.name.indexOf(language_name) !== -1){
+              found = value;
+            }
+          }
+        });
+        return found;
       }
       $(function(){
         // speech source: https://codepen.io/SteveJRobertson/pen/emGWaR

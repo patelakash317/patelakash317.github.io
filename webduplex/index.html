@@ -4,9 +4,9 @@
     <!-- sample origin: https://github.com/googlearchive/webplatform-samples -->
     <!-- http://localhost/webspeechdemo/webspeechdemo.html -->
     <meta charset="utf-8">
-    <title>WebDupe plugin</title>
+    <title>WebDuplex plugin</title>
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./assets/webdupe/css/webdupe.min.css" rel="stylesheet">
+    <link href="./assets/webduplex/css/webduplex.min.css" rel="stylesheet">
     <style>
       * {
         font-family: Verdana, Arial, sans-serif;
@@ -55,7 +55,7 @@
         top: 21px;
         border-radius: 0;
       }
-      .webdupenote{
+      .webduplexnote{
         position: fixed;
         bottom: 0;
         left: 0;
@@ -67,8 +67,8 @@
     </style>
   </head>
   <body>
-    <h3>Welcome to WebDupe.js - Web Voice Action using Speech Plugin</h3>
-    Starting using this plugin for free <b><a href="https://github.com/patelakash317/webdupe.js">Click here https://github.com/patelakash317/webdupe.js</a></b>
+    <h3>Welcome to WebDuplex.js - Web Voice Action using Speech Plugin</h3>
+    Starting using this plugin for free <b><a href="https://github.com/patelakash317/webduplex.js">Click here https://github.com/patelakash317/webduplex.js</a></b>
     <br/><br/>
     To test this plugin, press button at bottom right cornor of this page.
     <br/><br/>
@@ -85,13 +85,13 @@
     Likewise add any number of commands you want your users to get response of. 
     <br/>
     Thank you for using this plugin.<br/>
-    <p class="webdupenote">Quick Access Voice Keyboard Shortcut: Shift+S</p>
+    <p class="webduplexnote">Quick Access Voice Keyboard Shortcut: Shift+S</p>
 
     <div class="action_credits">
       <button class="btnca btn btn-primary" onclick="showCredits()">Actions</button>
       <div class="sendleft center">
         <div class="credits">
-          <div class="center" id="headline"><a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">WebDupe.js <br/>Web voice action plugin</a> demonstration</div>Google Chrome (Akash Patel [@patelakash317])
+          <div class="center" id="headline"><a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">WebDuplex.js <br/>Web voice action plugin</a> demonstration</div>Google Chrome (Akash Patel [@patelakash317])
         </div>
       </div>
     </p>
@@ -122,7 +122,7 @@
       // additional function ensd
     </script>
 
-    <script type="text/javascript" src="./assets/webdupe/js/webdupe.min.js"></script>
+    <script type="text/javascript" src="./assets/webduplex/js/webduplex.min.js"></script>
     <!-- action functions -->
     <script>
       // request keywords
@@ -144,7 +144,7 @@
             'show_status': false, // to show status, Quick, Speak now, Errors etc.
             'contact,contact us': { // to redirect to contact page
               action_type: 'redirect',
-              action_value: 'https://patelakash317.github.io/webdupe/contact.html',
+              action_value: 'https://patelakash317.github.io/webduplex/contact.html',
             },
             'about,info,about us': { // to speak about this website
               action_type: 'call_function',

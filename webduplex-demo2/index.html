@@ -261,17 +261,23 @@
 
       function speakFeatures(){
         recognition.stop();
+        // longer text fix: https://stackoverflow.com/questions/21947730/chrome-speech-synthesis-with-longer-texts -- update it later
         console.log('speak about brand');
-        var text = "Let me see...!!.. It has 8GB of RAM with maximum of 128 GB of internal storage, along with expandable storage capacity upto 256 GB, having 4000 mAh battery life which can give you another half day to use it. It operates on latest Snapdragon processor, which is Qualcomm 712. The most interesting in this smartphone is it has indisplay Fingerprint scanner which is the latest technology used to built this smartphone, moreover, is gives you super experience with its FHD+ super AMOLED display, also unlike other smartphone Realme XT have Quad camera setup which enable you to capture even micro photos by having 64MP + 8PM + 2MP + 2MP Quad back camera and 16MP in front camera.";
-        speak(text);
-        
-        setTimeout(function(){
-          console.log('recognition');
-          if(!speaking){
-            startRecognizingManually(); // to start recognising again manually
-          }
-        }, 5000);
+
+        var largeData = "Let me see...!!.. It has 8GB of RAM with maximum of 128 GB of internal storage, along with expandable storage capacity upto 256 GB, having 4000 mAh battery life which can give you another half day to use it. It operates on latest Snapdragon processor, which is Qualcomm 712. The most interesting in this smartphone is it has indisplay Fingerprint scanner which is the latest technology used to built this smartphone, moreover, is gives you super experience with its FHD plus super AMOLED display, also unlike other smartphone Realme XT have Quad camera setup which enable you to capture even micro photos with its unique setup as below, it has 64 megapixel of main lens, 8 megapixel for depth sensing, 2 megapixel for wide-angle photos and 2 megapixel of micro-images shots, So, it is a Quad back camera setup. And it has 16MP in front camera. So this are the main features of Realme XT Smartphone.";
+        speak(largeData);
       }
+
+      // for long text
+        // 1 - source: https://stackoverflow.com/a/48044163
+          var myTimeout;
+          function myTimer() {
+            window.speechSynthesis.pause();
+            window.speechSynthesis.resume();
+            myTimeout = setTimeout(myTimer, 10000);
+          }
+      // for long text ends
+
       function speakProccessor(){
         recognition.stop();
         console.log('speak about processor');
@@ -315,9 +321,13 @@
       let speaking = false;
       function speak(text){
         // var text = $('#message').val();
+        window.speechSynthesis.cancel();
+        myTimeout = setTimeout(myTimer, 10000);
+
         var msg = new SpeechSynthesisUtterance();
         var voices = window.speechSynthesis.getVoices(); // find your prefered language from this list
         // console.log(voices); // uncomment this you will get the list in console, select one and pass it in below getLanguage function in second argument
+        // let final_voices = getLanguage(voices, 'Google हिन्दी');
         let final_voices = getLanguage(voices, 'Google US English');
         if(final_voices == 'not'){
           console.log('No supporting language found.');
@@ -337,8 +347,8 @@
           msg.onend = function(e) {
             console.log('Finished in ' + event.elapsedTime + ' seconds.');
             speaking = false;
+            clearTimeout(myTimeout);
           };
-
           speechSynthesis.speak(msg);
         }
       }
@@ -369,7 +379,11 @@
               //   $voicelist.append($option);
               // });
             // }
-          }
+          };
+          // speechSynthesis.onend = function() {
+          //   // speechSynthesis.cancel(); 
+          //   console.log('speach finished');
+          // }
         } else {
         }
       });

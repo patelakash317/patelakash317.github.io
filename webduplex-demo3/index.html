@@ -88,6 +88,13 @@
       <!-- https://codepen.io/miocene/pen/rzmZKQ -->
       <!-- source: https://codepen.io/aakashrodrigues/pen/Gfhjw -->
       <style type="text/css">
+        .btngreeintg{
+          /*position: relative;
+          left: 29%;*/
+          position: absolute;
+          left: 43%;
+          bottom: 19%;
+        }
         .wrapper{
           /*display: table-cell;
           vertical-align: middle;
@@ -232,11 +239,20 @@
         }
           
         .sideburn{
-          width: 8px;
-          height: 25px;
+          /*width: 8px;*/
+          /*height: 25px;*/
+          /*--*/
+          /*height: 132px;*/
+          /*width: 47px;*/
+          /*--*/
+          height: 234px;
+          width: 20px;
+          /*--*/
           background: #E7AB57;
           position: absolute;
-          bottom: -25px;
+          /*bottom: -25px;*/
+          /*bottom: -49px;*/
+          bottom: -145px;
           opacity: 0;
           animation:sideburn-anim 0.7s 0.9s 1 ease;
           animation-fill-mode: forwards;
@@ -245,11 +261,15 @@
         }
 
         .sideburn#left{
-          left: 12px;
+          left: 0;
+          /*left: 12px;*/
+          border-bottom-left-radius: 10px;
         }
 
         .sideburn#right{
-          right: 12px;
+          right: 0;
+          border-bottom-right-radius: 10px;
+          /*right: 12px;*/
         }
 
         .face{
@@ -385,16 +405,21 @@
 
         }
         .shadow-wrapper{
-          width: 98px;
-          height: 260px;
+          /*width: 98px;
+          height: 260px;*/
+          width: 88px;
+          height: 222px;
           position: absolute;
-          left: -8px;
+          /*left: -8px;*/
+          left: -2px;
+          border-bottom-left-radius: 39px;
           bottom: -84px;
           z-index: 4;
           overflow: hidden;
         }
         .shadow{
-          width: 98px;
+          width: 133px;
+          /*width: 98px;*/
           height: 260px;
           border-radius: 50px;
           background: rgba(149,36,0,0.1);
@@ -405,6 +430,8 @@
           animation-fill-mode: forwards;
           -webkit-animation:shadow-anim 1s 2.8s 1 ease;
           -webkit-animation-fill-mode: forwards;
+
+          box-shadow: none !important;
         }
         .triangle-light{
           width: 400px;
@@ -1164,7 +1191,7 @@
               <div class="hair-main">
                 <div class="sideburn" id="left"></div>
                 <div class="sideburn" id="right"></div>
-                <div class="hair-top"></div>
+                <!-- <div class="hair-top"></div> -->
               </div>
               <div class="face">
                 <!-- <div class="hair-bottom"></div> -->
@@ -1185,6 +1212,7 @@
             </div>
             <!-- <span class="music-note" id="one">&#9835;</span> -->
             <!-- <span class="music-note" id="two">&#9834;</span> -->
+            <button class="btngreeintg btn btn-primary" onclick="sayGreetings()">Greeting message</button>
           </div>
         <!-- characterends -->
       </div>
@@ -1199,12 +1227,14 @@
           <!-- instructions -->
             <br/>Start using this plugin for free <br/><b><a href="https://github.com/patelakash317/webduplex.js">Click here https://github.com/patelakash317/webduplex.js</a></b>
             <br/><br/>
-            To test this plugin, press button at bottom right cornor of this page.
-            <br/><br/>
-            <b>After pressing:</b><br/>
-            Test 1: Speak <b>"आप क्या कर सकते हैं"</b><br/>
-            Test 2: Speak <b>"दिवाली की ऑफर"</b>
-
+            <div class="text-left">
+              To test this plugin, press button at bottom right cornor of this page.
+              <br/><br/>
+              <b>After pressing:</b><br/>
+              Test 1: Speak <b>"आप क्या कर सकते हैं"</b><br/>
+              Test 2: Speak <b>"दिवाली की ऑफर"</b><br/>
+              Test 3: Speak <b>"सबसे बेहतरीन स्मार्टफोन"</b>
+            </div>
             <br/><br/>
             Likewise add any number of commands you want your users to get response of. 
             <br/><br/>
@@ -1263,40 +1293,69 @@
 
         // specific
           action_block = {
-            'क्या,कर,सकते': { // to speak about mobile description
+            'क्या,कर,सकते': {
               action_type: 'call_function',
               action_value: 'speakWhat',
               // action_value: 'callout/about',
             },
-            'दिवाली,ऑफर': { // to speak about mobile description
+            'दिवाली,ऑफर': {
               action_type: 'call_function',
               action_value: 'speakDiwaliOffer',
+              // action_value: 'callout/about',
+            },
+            'बेहतरीन,सबसे,बढ़िया,स्मार्टफोन': {
+              action_type: 'call_function',
+              action_value: 'speakBestSmartphone',
               // action_value: 'callout/about',
             },
           };
       // request keywords ends
 
       // first welcome message
-        setTimeout(function(){
-          window.speechSynthesis.cancel();
-          $('.btnca').focus();
-          var text = "सबसे पहले , आपको दिवाली की खूब खूब बधाईया , मेरा यह प्रोग्राम उपयोग करने के लिए आपका धन्यवाद .";
-          speak(text, false);
-        }, 500);
+        let first_spe = true;
+        function sayGreetings(){
+          if(first_spe){
+            console.log('here');
+            setTimeout(function(){
+              window.speechSynthesis.cancel();
+              $('.btnca').focus();
+              var text = "सबसे पहले , आपको दिवाली की खूब खूब बधाईया , मेरा यह प्रोग्राम उपयोग करने के लिए आपका धन्यवाद .";
+              speak(text, true);
+              $('.btngreeintg').remove();
+            }, 500);
+            first_spe = false;
+          }
+        }
       // welcome message ends
 
       function speakWhat(){
         recognition.stop();
-        console.log('speak about brand');
+        console.log('speak about what');
         var text = "मै ! आपके लिए कुछ भी कर सकती हूँ, बताये क्या किया जाये !";
         speak(text, true);
       }
       function speakDiwaliOffer(){
         recognition.stop();
-        console.log('speak about brand');
+        console.log('speak about diwali offer');
         var text = "अभी दिवाली के त्यौहार पर कई जगह भारी डिस्काउंट दिया जा रहा हैं ! आप इसका जल्दही लाभ उठाये. जैसेकि आप अपने कई नज़दीकी दुकानों पे जा सकते हैं, अन्यथा आप ऑनलाइन खरीदी एवं बधाईया भेज सकते हैं.";
         speak(text, true);
       }
+      function speakBestSmartphone(){
+        recognition.stop();
+        console.log('speak about best smartphone');
+        var text = "हम, अभी के रिकॉर्ड के मुताबिक, बजट स्मार्टफोन में सबसे पहले आता है, रियलमी एक्स टी, जो अत्याधुनिक तकनीक से लैस हैं, और अगर आप महंगे फ़ोन लेना चाहते हैं तो, एनडीटीवी गैजेट, के मुताबिक फलैगशीप, स्मार्टफोन में सबसे पहले आता हैं, एप्पल कंपनी का आईफोन 11 प्रो मैक्स जो हाल ही में लांच किया गया हैं, उसके बाद आता है वनप्लस सेवन ति, जो दुनिया के सबसे बेहतरीन स्मार्टफोन में से दो गिने जाते हैं.";
+        speak(text, true);
+      }
+
+      // for long text
+        // 1 - source: https://stackoverflow.com/a/48044163
+          var myTimeout;
+          function myTimer() {
+            window.speechSynthesis.pause();
+            window.speechSynthesis.resume();
+            myTimeout = setTimeout(myTimer, 10000);
+          }
+      // for long text ends
 
       var face_expression;
       function startSpeaking(){
@@ -1307,6 +1366,14 @@
           $('.mouth').css('height', '33px'); //default
         }
 
+        if($('.mouth').width() >= '66'){
+          $('.mouth').css('width', '33px'); //default
+          $('.mouth').css('left', '60%'); //default
+        } else {
+          $('.mouth').css('width', '66px'); //default
+          $('.mouth').css('left', '50%'); //default
+        }
+
         face_expression = setTimeout(function(){startSpeaking();},150);
       }
       function stopSpeaking(){
@@ -1315,6 +1382,9 @@
       let speaking = false;
       function speak(text, action){
         // var text = $('#message').val();
+        window.speechSynthesis.cancel();
+        myTimeout = setTimeout(myTimer, 10000);
+
         var msg = new SpeechSynthesisUtterance();
         
         msg.onstart = function(e) {
@@ -1347,6 +1417,10 @@
           msg.onend = function(e) {
             console.log('Finished in ' + event.elapsedTime + ' seconds.');
             speaking = false;
+            $('.mouth').css('height', '33px'); //default
+            $('.mouth').css('width', '66px'); //default
+            $('.mouth').css('left', '50%'); //default
+            clearTimeout(myTimeout);
             stopSpeaking();
           };
 

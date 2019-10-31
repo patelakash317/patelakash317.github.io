@@ -360,6 +360,11 @@
             speaking = false;
             clearTimeout(myTimeout);
           };
+
+          // wait on voices to be loaded before fetching list
+          window.speechSynthesis.onvoiceschanged = function() {
+            window.speechSynthesis.getVoices();
+          };
           window.speechSynthesis.speak(msg);
         }
       }

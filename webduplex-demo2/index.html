@@ -344,6 +344,9 @@
           speaking = true;
           // mentioned language supporting 
           msg.voice = final_voices;
+          msg.voiceURI = final_voices.voiceURI;
+          msg.lang = final_voices.lang;
+
           // voices[4]
           msg.rate = 10 / 10;
           msg.pitch = 1;
@@ -357,7 +360,7 @@
             speaking = false;
             clearTimeout(myTimeout);
           };
-          speechSynthesis.speak(msg);
+          window.speechSynthesis.speak(msg);
         }
       }
       function getLanguage(voices, language_name){
@@ -375,7 +378,7 @@
         // speech source: https://codepen.io/SteveJRobertson/pen/emGWaR
         // support: https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
         if ('speechSynthesis' in window) {
-          speechSynthesis.onvoiceschanged = function() {
+          window.speechSynthesis.onvoiceschanged = function() {
             // var $voicelist = $('#voices');
 
             // if($voicelist.find('option').length == 0) {

@@ -336,6 +336,9 @@
         var voices = window.speechSynthesis.getVoices(); // find your prefered language from this list
         // console.log(voices); // uncomment this you will get the list in console, select one and pass it in below getLanguage function in second argument
         // let final_voices = getLanguage(voices, 'Google हिन्दी');
+        alert(voices);
+        voices = window.speechSynthesis.getVoices(); // find your prefered language from this list
+        alert(voices);
         let final_voices = getLanguage(voices, 'Google US English');
         if(final_voices == 'not'){
           console.log('No supporting language found.');

@@ -192,15 +192,25 @@
         }, 5000);  
       }
 
+      setTimeout(function(){test();}, 100);
+      function test(){ // preload get voices to save time for mobile
+        var voices_preload = window.speechSynthesis.getVoices(); // find your prefered language from this list
+        // $.each(voices, function(index, value){
+        //   $('#logsas').html($('#logsas').html()+'  -  '+value.name+'<br/>');
+        // });
+      }
+      
       let speaking = false;
       function speak(text){
         // var text = $('#message').val();
         var msg = new SpeechSynthesisUtterance();
         var voices = window.speechSynthesis.getVoices(); // find your prefered language from this list
         // console.log(voices); // uncomment this you will get the list in console, select one and pass it in below getLanguage function in second argument
-        let final_voices = getLanguage(voices, 'Google US English');
+        // let final_voices = getLanguage(voices, 'English'); // for all platform support
+        let final_voices = getLanguage(voices, 'Google US English'); // for quality
         if(final_voices == 'not'){
-          console.log('No supporting language found.');
+          alert('We are sorry on behalf of your browser. Unfortunately, your browser does not support this language. But still you can try this on your Desktop.');
+          // alert('No supporting language found.');
           alert(text);
         } else {
           speaking = true;

@@ -1161,6 +1161,9 @@
         }
       </style>
     <!-- character ends -->
+    <div class="col-md-12 p-0" id="logsas">
+    </div>
+    <!-- <button onclick="test()">asas</button> -->
     <div class="col-md-12 p-0">
       <br/><br><br><br><br><br>
       <div class="product_div row">
@@ -1279,7 +1282,8 @@
       // additional function ensd
     </script>
 
-    <script type="text/javascript" src="./assets/webduplex/js/webduplex.min.js"></script>
+    <script type="text/javascript" src="./assets/webduplex/js/webduplex.js"></script>
+    <!-- <script type="text/javascript" src="./assets/webduplex/js/webduplex.min.js"></script> -->
     <!-- action functions -->
     <script>
       // request keywords
@@ -1329,7 +1333,7 @@
               $('.btnca').focus();
               var text = "सबसे पहले , आपको दिवाली की खूब खूब बधाईया , मेरा यह प्रोग्राम उपयोग करने के लिए आपका धन्यवाद ,. अब आप ऊपर से दायी और , दिए गए एक्शन बटन का ,  उपयोग करे. अब  उनमे दिए उदाहरणों का इस्तेमाल करने के लिए , निचे से दाई और , एक माइक वाला बटन दिया गया हैं , जिससे आप उदाहरणों वाले प्रश्न मुझे पूछ सकते हैं. तो चलिए सुरु करते हैं.";
               speak(text, true);
-              $('.btngreeintg').remove();
+              // $('.btngreeintg').remove();
             }, 500);
             first_spe = false;
           }
@@ -1387,6 +1391,20 @@
       function stopSpeaking(){
         clearTimeout(face_expression);
       }
+
+      setTimeout(function(){test();}, 100);
+      function test(){ // preload get voices to save time for mobile
+        var voices = window.speechSynthesis.getVoices(); // find your prefered language from this list
+        //   // $('#logsas').html(voices.toString());
+        //   // console.log(voices);
+        //   // let final_voices = getLanguage(voices, 'Google हिन्दी');
+        //   // $('#logsas').html(final_voices);
+
+        // $.each(voices, function(index, value){
+        //   $('#logsas').html($('#logsas').html()+'  -  '+value.name+'<br/>');
+        // });
+      }
+
       let speaking = false;
       function speak(text, action){
         // var text = $('#message').val();
@@ -1407,10 +1425,16 @@
         // if(select_dialect.selectedIndex == '2'){
           let final_voices = getLanguage(voices, 'Google हिन्दी');
         // }
-        if(final_voices == 'not'){
-          console.log('No supporting language found.');
-          alert(text);
+        if( final_voices == 'not' ){
+          $('.product_div').html('We are sorry on behalf of your browser.<br/>Unfortunately, your browser does not support this language.<br/>But still you can try this on your Desktop.');
+          alert('No supporting language found.');
+          // alert(text);
         } else {
+          if(final_voices == 'not'){
+            final_voices = final_voices_2;
+          }
+          console.log(text);
+
           speaking = true;
           // mentioned language supporting 
           msg.voice = final_voices;

@@ -102,7 +102,8 @@ a {
               -ms-flex-pack: center;
                   justify-content: center;
           -ms-flex-wrap: wrap;
-              flex-wrap: wrap; }
+              flex-wrap: wrap; 
+          height: 38px;}
           #mainContainer #mainContentBlock #mainContent #introBox #linkBox li {
             margin: 5px;
             border-radius: 15px;
@@ -120,7 +121,8 @@ a {
             #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured {
               border: 1px solid #00ade0;
               padding-right: 15px;
-              box-shadow: 0px 2px 5px #cccccc; }
+              box-shadow: 0px 2px 5px #cccccc;
+              transition: all 0.2s ease!important; }
               #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured .link-icon {
                 box-shadow: none; }
               #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured:hover {
@@ -134,8 +136,13 @@ a {
                 padding-right: 2px; }
               #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured .description {
                 display: inline; }
+              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured:hover a .description{
+                color: #ffffff; }
       #mainContainer #mainContentBlock #mainContent #fullBioBox {
         padding: 20px 40px; }
+      #mainContainer #mainContentBlock #mainContent #fullBioBox p {
+        text-align: justify; 
+        line-height: 22px; }
 
 div.footer {
   text-align: center;

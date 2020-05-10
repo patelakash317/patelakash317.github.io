@@ -11,8 +11,24 @@
     <div id="mainContainer">
       <div id="mainContentBlock">
         <div id="mainContent">
-          <div id="avatarImageBlock" style="background-image: url('images/avatar.jpg');">
-          </div>
+          <div id="avatarImageBlock" style="background-image: url('images/avatar.jpg');"></div>
+
+          <!-- eye monitoring -->
+            <div class="ufo">
+              <div class="monster" style="color: #7cb342">
+                <div class="eye-lid">
+                  <div class="eyes">
+                    <div class="eye"></div>
+                  </div>
+                </div>
+                <div class="eye-lid2">
+                  <div class="eyes2">
+                    <div class="eye"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- eye monitoring ends -->
 
           <div id="introBox">
             <h1>Akash Patel</h1>
@@ -45,7 +61,7 @@
       </div>
       <footer>
         <div class="footer">
-          <p>&copy; Akash Patel. 
+          <p>&copy; Akash Patel. <i class="btnacteye fa fa-eye" onclick="activeDeVis()"></i>
           <!-- 
           thank you for using MyStaticPage.com! 
           Please keep this link back to us on your site as part of 
@@ -63,7 +79,6 @@
         let links_3 = document.getElementById('dotlink').classList.remove("featured");
         element.classList.add("featured");
       }
-
       tody();
       function tody(){
         setTimeout(function(){
@@ -84,6 +99,40 @@
       function minRad(){
         return Math.floor(Math.random() * 150);
       }
+
+      // eye monitoring
+        function activeDeVis(){
+          if($('.ufo').hasClass('vis')){
+            $('.ufo').removeClass('vis');
+            $('.btnacteye').removeClass('fa-eye-slash');
+            $('.btnacteye').addClass('fa-eye');
+
+          } else {
+            $('.ufo').addClass('vis');
+            $('.btnacteye').removeClass('fa-eye');
+            $('.btnacteye').addClass('fa-eye-slash');
+          }
+        }
+        let ufo = document.querySelector('body');
+        // let ufo = document.querySelector('.ufo');
+        ufo.addEventListener('mousemove', (e) => {
+          let eyes = document.querySelector('.eyes');
+          let mouseX = (eyes.getBoundingClientRect().left); 
+          let mouseY = (eyes.getBoundingClientRect().top);
+          let radianDegrees = Math.atan2(e.pageX - mouseX, e.pageY - mouseY);
+          let rotationDegrees = (radianDegrees * (180/ Math.PI) * -1) + 180;
+          eyes.style.transform = `rotate(${rotationDegrees}deg)`
+
+
+
+          let eyes2 = document.querySelector('.eyes2');
+          let mouseX2 = (eyes2.getBoundingClientRect().left); 
+          let mouseY2 = (eyes2.getBoundingClientRect().top);
+          let radianDegrees2 = Math.atan2(e.pageX - mouseX2, e.pageY - mouseY2);
+          let rotationDegrees2 = (radianDegrees2 * (180/ Math.PI) * -1) + 180;
+          eyes2.style.transform = `rotate(${rotationDegrees2}deg)`
+        });
+      // eye monitoring ends
     </script>
   </body>
 </html>

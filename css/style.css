@@ -1,47 +1,29 @@
-html, body {
-  height: 100%;
-  height: 100vh; }
+/*theme and default template */
+  html, body {
+    height: 100%;
+    height: 100vh; }
 
-body {
-  min-height: 100%;
-  padding: 0px;
-  margin: 0px; }
+  body {
+    min-height: 100%;
+    padding: 0px;
+    margin: 0px; }
 
-body {
-  background-color: #0086ad;
-  background-image: url("../images/background.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-attachment: fixed;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #333; }
+  body {
+    background-color: #0086ad;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #333; }
 
-a {
-  text-decoration: none;
-  color: #00ade0; }
-  a:hover {
-    color: #00c1fa; }
+  a {
+    text-decoration: none;
+    color: #00ade0; }
+    a:hover {
+      color: #00c1fa; }
 
-#mainContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  min-height: 100%;
-  max-width: 750px;
-  margin: 0px auto; }
-  #mainContainer #mainContentBlock {
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
+  #mainContainer {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -54,13 +36,13 @@ a {
             justify-content: center;
     -ms-flex-line-pack: center;
         align-content: center;
-    padding: 20px; }
-    #mainContainer #mainContentBlock #mainContent {
-      background-color: #fff;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      margin: 0px auto;
-      overflow: hidden;
+    min-height: 100%;
+    max-width: 750px;
+    margin: 0px auto; }
+    #mainContainer #mainContentBlock {
+      -webkit-box-flex: 1;
+          -ms-flex: 1 0 auto;
+              flex: 1 0 auto;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -68,84 +50,188 @@ a {
       -webkit-box-direction: normal;
           -ms-flex-direction: column;
               flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
       -ms-flex-line-pack: center;
-          align-content: center; }
-      #mainContainer #mainContentBlock #mainContent #avatarImageBlock {
-        width: 300px;
-        height: 300px;
-        margin: 10px auto;
-        border-radius: 50%;
-        background-position: center center;
-        background-size: cover;
-        box-shadow: inset 5px 5px 35px 5px #eeeeee;
-        opacity: 0.95; 
-        transition: all 2.2s ease!important; }
-      #mainContainer #mainContentBlock #mainContent #introBox {
-        text-align: center;
-        background-color: #f8f8f8;
-        background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
-        margin: 0px;
-        padding: 10px 50px; }
-        #mainContainer #mainContentBlock #mainContent #introBox #linkBox {
+          align-content: center;
+      padding: 20px; }
+      #mainContainer #mainContentBlock #mainContent {
+        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        margin: 0px auto;
+        overflow: hidden;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -ms-flex-line-pack: center;
+            align-content: center; }
+        #mainContainer #mainContentBlock #mainContent #avatarImageBlock {
+          width: 300px;
+          height: 300px;
           margin: 10px auto;
-          padding: 0px;
-          list-style: none;
-          max-width: 400px;
-          display: -webkit-box;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-orient: horizontal;
-          -webkit-box-direction: normal;
-              -ms-flex-direction: row;
-                  flex-direction: row;
-          -webkit-box-pack: center;
-              -ms-flex-pack: center;
-                  justify-content: center;
-          -ms-flex-wrap: wrap;
-              flex-wrap: wrap; 
-          height: 38px;}
-          #mainContainer #mainContentBlock #mainContent #introBox #linkBox li {
-            margin: 5px;
-            border-radius: 15px;
-            display: inline; }
-            #mainContainer #mainContentBlock #mainContent #introBox #linkBox li .link-icon {
-              background-color: #00ade0;
-              padding: 6px 4px;
-              box-shadow: 0px 2px 5px #cccccc;
-              border-radius: 50%; }
-              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li .link-icon:hover {
-                background-color: #00c1fa; }
-            #mainContainer #mainContentBlock #mainContent #introBox #linkBox li a .description {
-              display: none;
-              font-size: 0.8em; }
-            #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured {
-              border: 1px solid #00ade0;
-              padding-right: 15px;
-              box-shadow: 0px 2px 5px #cccccc;
-              transition: all 0.2s ease!important; }
-              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured .link-icon {
-                box-shadow: none; }
-              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured:hover {
-                border-color: #00c1fa;
-                background-color: #00c1fa; }
-                #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured:hover .link-icon {
+          border-radius: 50%;
+          background-position: center center;
+          background-size: cover;
+          box-shadow: inset 5px 5px 35px 5px #eeeeee;
+          opacity: 0.95; 
+          transition: all 2.2s ease!important; }
+        #mainContainer #mainContentBlock #mainContent #introBox {
+          text-align: center;
+          background-color: #f8f8f8;
+          background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+          margin: 0px;
+          padding: 10px 50px; }
+          #mainContainer #mainContentBlock #mainContent #introBox #linkBox {
+            margin: 10px auto;
+            padding: 0px;
+            list-style: none;
+            max-width: 400px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap; 
+            height: 38px;}
+            #mainContainer #mainContentBlock #mainContent #introBox #linkBox li {
+              margin: 5px;
+              border-radius: 15px;
+              display: inline; }
+              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li .link-icon {
+                background-color: #00ade0;
+                padding: 6px 4px;
+                box-shadow: 0px 2px 5px #cccccc;
+                border-radius: 50%; }
+                #mainContainer #mainContentBlock #mainContent #introBox #linkBox li .link-icon:hover {
                   background-color: #00c1fa; }
-              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured a .description {
-                color: #333;
-                padding-left: 5px;
-                padding-right: 2px; }
-              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured .description {
-                display: inline; }
-              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured:hover a .description{
-                color: #ffffff; }
-      #mainContainer #mainContentBlock #mainContent #fullBioBox {
-        padding: 20px 40px; }
-      #mainContainer #mainContentBlock #mainContent #fullBioBox p {
-        text-align: justify; 
-        line-height: 22px; }
+              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li a .description {
+                display: none;
+                font-size: 0.8em; }
+              #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured {
+                border: 1px solid #00ade0;
+                padding-right: 15px;
+                box-shadow: 0px 2px 5px #cccccc;
+                transition: all 0.2s ease!important; }
+                #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured .link-icon {
+                  box-shadow: none; }
+                #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured:hover {
+                  border-color: #00c1fa;
+                  background-color: #00c1fa; }
+                  #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured:hover .link-icon {
+                    background-color: #00c1fa; }
+                #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured a .description {
+                  color: #333;
+                  padding-left: 5px;
+                  padding-right: 2px; }
+                #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured .description {
+                  display: inline; }
+                #mainContainer #mainContentBlock #mainContent #introBox #linkBox li.featured:hover a .description{
+                  color: #ffffff; }
+        #mainContainer #mainContentBlock #mainContent #fullBioBox {
+          padding: 20px 40px; }
+        #mainContainer #mainContentBlock #mainContent #fullBioBox p {
+          text-align: justify; 
+          line-height: 22px; }
 
-div.footer {
-  text-align: center;
-  font-size: 0.8em;
-  text-shadow: 0px 2px 5px #cccccc; }
+  div.footer {
+    text-align: center;
+    font-size: 0.8em;
+    text-shadow: 0px 2px 5px #cccccc; }
+/*theme and template default css ends*/
+
+/*eye monitoring*/
+  /*source: https://scotch.io/bar-talk/build-an-eye-tracking-alien-with-javascript-solution-to-code-challenge-4*/
+  /*Mofidication: Akash Patel @patelakash317*/
+  .btnacteye{
+    cursor: pointer;
+  }
+  .ufo{
+    visibility: hidden;
+  }
+  .ufo.vis{
+    visibility: visible;
+  }
+  .eye-lid {
+    text-align: center;
+    display: flex;
+    font-size: 0.65em;
+    /*width: 1em;
+    height: 1em;*/
+    position: absolute;
+    left: 0.25em;
+    top: 0.3em;
+    background-color: white;
+    border-radius: 0.5em 0.5em 0.5em 0.5em / 0.6em 0.6em 0.4em 0.4em;
+    box-shadow: 0.03em 0.14em rgba(0,0,0,0.1);
+
+    top: 151px;
+    left: 47.5%;
+    width: 15px;
+    height: 9px;
+    transform: rotate(-13deg);
+    background: transparent;
+  }
+  .eye-lid2 {
+    text-align: center;
+    display: flex;
+    font-size: 0.65em;
+    /*width: 1em;
+    height: 1em;*/
+    position: absolute;
+    left: 0.25em;
+    top: 0.3em;
+    background-color: white;
+    border-radius: 0.5em 0.5em 0.5em 0.5em / 0.6em 0.6em 0.4em 0.4em;
+    box-shadow: 0.03em 0.14em rgba(0,0,0,0.1);
+
+    top: 141px;
+    left: 50.9%;
+    width: 15px;
+    height: 9px;
+    transform: rotate(-13deg);
+    background: transparent;
+  }
+  .eyes, .eyes2{
+    text-align: center;
+    display: flex;
+    font-size: 0.65em;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    left: 0.25em;
+    top: 0.3em;
+  }
+  .eye {
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    width: 75%;
+    height: 75%;
+    background-color: black;
+    border-radius: 50%;
+  }
+  .eye:after { /*white shadow*/
+    --pupil-size: 0.4em;
+    position: absolute;
+    top: 0.05em;
+    left: 0.3em;
+    width: var(--pupil-size);
+    height: var(--pupil-size);
+    background: white;
+    border-radius: 50%;
+    content: " ";
+  }
+/*eye monitoring ends*/

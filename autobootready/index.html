@@ -277,27 +277,39 @@
       $('#btnapply').on('click', function(){
         // adding js
         var my_awesome_script = document.createElement('script');
-        my_awesome_script.setAttribute('src','./assets/autobootready/js/autobootready.min.js');
+        let script = './assets/autobootready/js/autobootready.min.js';
+        my_awesome_script.setAttribute('src', script);
         document.body.appendChild(my_awesome_script);
 
-        // adding css
-         var head  = document.getElementsByTagName('head')[0];
-          var link  = document.createElement('link');
-          link.id   = 'cssId';
-          link.rel  = 'stylesheet';
-          link.type = 'text/css';
-          link.href = './assets/autobootready/css/autobootready.css';
-          link.media = 'all';
-          head.appendChild(link);
-
-        $('.global_action').remove();
-        $('.global_action_new').remove();
-        setTimeout(function(){
-          applyText();
-        }, 50);
+        my_awesome_script.onload =  function(){
+          // adding css
+            var head  = document.getElementsByTagName('head')[0];
+            var link  = document.createElement('link');
+            link.id   = 'cssId';
+            link.rel  = 'stylesheet';
+            link.type = 'text/css';
+            link.href = './assets/autobootready/css/autobootready.css';
+            link.media = 'all';
+            head.appendChild(link);
+            
+            link.onload =  function(){
+              $('.global_action').remove();
+              $('.global_action_new').remove();
+              setTimeout(function(){
+                applyText();
+              }, 0);
+            }
+            css.onerror = function() {
+              alert("System is unable to load the stylesheet.");
+            }
+        }
+        my_awesome_script.onerror = function() {
+          alert("System is unable to load the script.");
+        }
       });
 
       async function applyText(){
+        await new Promise((resolve, reject) => setTimeout(resolve, 100)); // wait 1 seconds
         applyCSS('label');
 
         await new Promise((resolve, reject) => setTimeout(resolve, 1000)); // wait 1 seconds
@@ -318,8 +330,12 @@
         await new Promise((resolve, reject) => setTimeout(resolve, 1000)); // wait 1 seconds
         applyCSS('button');
 
-        await new Promise((resolve, reject) => setTimeout(resolve, 3000)); // wait 1 seconds
-        showApplied();
+        if($('#txtmon').hasClass('applycss')){
+          await new Promise((resolve, reject) => setTimeout(resolve, 3000)); // wait 1 seconds
+          showApplied();
+        } else {
+          applyText();
+        }
       }
 
       function applyCSS(element_name){

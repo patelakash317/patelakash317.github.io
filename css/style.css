@@ -78,7 +78,8 @@ a {
         background-position: center center;
         background-size: cover;
         box-shadow: inset 5px 5px 35px 5px #eeeeee;
-        opacity: 0.95; }
+        opacity: 0.95; 
+        transition: all 2.2s ease!important; }
       #mainContainer #mainContentBlock #mainContent #introBox {
         text-align: center;
         background-color: #f8f8f8;

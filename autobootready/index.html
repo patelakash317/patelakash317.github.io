@@ -9,6 +9,7 @@
       .boxport{
         width: 35%;
         float: left;
+        padding: 5px;
       }
       .fullboxport{
         width: 100%;
@@ -274,7 +275,10 @@
         }
       // additional function ends
 
-      $('#btnapply').on('click', function(){
+      $('#btnapply').on('click', async function(){
+        $('.global_action_new').html('<h1>Upgrading to Bootstrap..</h1>');
+        await new Promise((resolve, reject) => setTimeout(resolve, 2000)); // wait 1 seconds
+
         // adding js
         var my_awesome_script = document.createElement('script');
         let script = './assets/autobootready/js/autobootready.min.js';
@@ -295,6 +299,7 @@
             link.onload =  function(){
               $('.global_action').remove();
               $('.global_action_new').remove();
+
               setTimeout(function(){
                 applyText();
               }, 0);

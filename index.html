@@ -50,21 +50,30 @@
             <h1>Akash Patel</h1>
             <p>Software engineer to be fruitful in this world.</p>
             <ul id="linkBox">
-              <li class="featured" id="linklink" onmouseover="updateFlag(this);">
-                <a href="https://in.linkedin.com/in/patelakash317" title="Akash Patel | Linkedin">
-                  <i class="fa fa-linkedin fa-inverse fa-fw link-icon"></i><span class="description">Akash Patel | Linkedin</span>
+              <li class="featured" id="projlink" onmouseover="updateFlag(this);">
+                <a href="https://github.com/patelakash317" title="Akash Patel | Blog">
+                  <i class="fa fa-briefcase fa-inverse fa-fw link-icon"></i><span class="description">Projects</span>
                 </a>
               </li>
-                
+
               <li class="" id="bloglink" onmouseover="updateFlag(this);">
                 <a href="https://patelakash.blogspot.com" title="Akash Patel | Blog">
-                  <i class="fa fa-link fa-inverse fa-fw link-icon"></i><span class="description">Akash Patel | Blog</span>
+                  <i class="fa fa-link fa-inverse fa-fw link-icon"></i><span class="description">Blog</span>
                 </a>
+              </li>
+
+              <li class="" id="linklink" onmouseover="updateFlag(this);">
+                <a href="https://in.linkedin.com/in/patelakash317" id="lnklinkedinpreview" title="Akash Patel | Linkedin">
+                  <i class="fa fa-linkedin fa-inverse fa-fw link-icon"></i><span class="description">Linkedin</span>
+                </a>
+                <div class="short_preview">
+                  <div class="LI-profile-badge" id="linkedinpreview"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="patelakash317"><a class="LI-simple-link" href='https://in.linkedin.com/in/patelakash317?trk=profile-badge'>Akash Patel</a></div>
+                </div>
               </li>
                 
               <li class="" id="dotlink" onmouseover="updateFlag(this);">
                 <a href="https://dotdiaries.com/akash" title="Akash Patel | Dotdiaries">
-                  <i class="fa fa-link fa-inverse fa-fw link-icon"></i><span class="description">Akash Patel | Dotdiaries</span>
+                  <i class="fa fa-link fa-inverse fa-fw link-icon"></i><span class="description">Dotdiaries</span>
                 </a>
               </li>
             </ul>
@@ -75,9 +84,10 @@
           </div>
         </div>
       </div>
+
       <footer>
         <div class="footer">
-          <p>&copy; Akash Patel. <i class="btnacteye fa fa-eye" onclick="activeDeVis()"></i>
+          <p>&copy; Akash Patel | <a href="https://www.instagram.com/akashadept/" title="Akash Patel | Photography">Photography</a> | <a href="https://www.yourquote.in/akash-patel-oh3s/quotes" title="Akash Patel | Quotes">Quotes</a> |  <i class="btnacteye fa fa-eye" onclick="activeDeVis()"></i>
           <!-- 
           thank you for using MyStaticPage.com! 
           Please keep this link back to us on your site as part of 
@@ -88,32 +98,73 @@
       </footer>
     </div>
     <script type="text/javascript" src="./autobootready/assets/js/jquery-3.5.1.min.js"></script>
+    <style type="text/css">
+      .LI-profile-badge{
+        transition: all 0.5s ease;
+        position: fixed;
+        bottom: -390px; /* based on preview box height */
+      
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    </style>
     <script type="text/javascript">
       function updateFlag(element){
         let link_1 = document.getElementById('linklink').classList.remove("featured");
         let links_2 = document.getElementById('bloglink').classList.remove("featured");
         let links_3 = document.getElementById('dotlink').classList.remove("featured");
+        let links_43 = document.getElementById('projlink').classList.remove("featured");
         element.classList.add("featured");
       }
+
+      // $(selector).hover(inFunction,outFunction)
+      $('#linklink').hover(function(){
+        $(".LI-profile-badge").animate({bottom:'0'},0);
+      }, function(){
+        $(".LI-profile-badge").animate({bottom:'-390px'},0);
+      });
+
+      let is_mobile = false;
+      if(window.matchMedia("(max-width: 767px)").matches){
+        // The viewport is less than 768 pixels wide
+        is_mobile = true;
+      }
+      console.log(is_mobile);
+
       tody();
       function tody(){
         setTimeout(function(){
-          $('#avatarImageBlock').css('border-radius', '150px');
+          if(is_mobile !== false){ // if small device - like mobile
+            $('#avatarImageBlock').css('border-radius', '80');
+          } else {
+            $('#avatarImageBlock').css('border-radius', '150px');
+          }
 
           setTimeout(function(){
             let final_min_radius = minRad();
-            console.log('New radius: '+final_min_radius);
-            while(final_min_radius <= 80){
-              final_min_radius = minRad();
+            // console.log('New radius: '+final_min_radius);
+            if(is_mobile !== false){ // if small device - like mobile
+              while((final_min_radius <= 35) || (final_min_radius >= 100)){
+              // while(final_min_radius >= 80){
+                final_min_radius = minRad();
+              }
+            } else {
+              while(final_min_radius <= 100){
+                final_min_radius = minRad();
+              }
             }
-            console.log('Final radius: '+final_min_radius);
+            // console.log('Final radius: '+final_min_radius);
             $('#avatarImageBlock').css('border-radius', final_min_radius+'px');
             tody();
           }, 4000);
         }, 1000);
       }
       function minRad(){
-        return Math.floor(Math.random() * 150);
+        if(is_mobile !== false){ // if small device - like mobile
+          return Math.floor(Math.random() * 100);
+        } else {
+          return Math.floor(Math.random() * 150);
+        }
       }
 
       // eye monitoring
@@ -139,8 +190,6 @@
           let rotationDegrees = (radianDegrees * (180/ Math.PI) * -1) + 180;
           eyes.style.transform = `rotate(${rotationDegrees}deg)`
 
-
-
           let eyes2 = document.querySelector('.eyes2');
           let mouseX2 = (eyes2.getBoundingClientRect().left); 
           let mouseY2 = (eyes2.getBoundingClientRect().top);
@@ -160,5 +209,24 @@
       gtag('config', 'UA-166126782-1');
     </script>
 
+    <script type="text/javascript">
+      $(document).ready(function() {
+        setTimeout(function(){
+          var my_awesome_script = document.createElement('script');
+          let script = 'https://platform.linkedin.com/badges/js/profile.js';
+          my_awesome_script.setAttribute('src', script);
+          my_awesome_script.async = true;
+          my_awesome_script.defer = true;
+          document.body.appendChild(my_awesome_script);
+
+          my_awesome_script.onload =  function(){
+            console.log("Success");
+          }
+          my_awesome_script.onerror = function() {
+            console.log("System is unable to load the script.");
+          }
+        }, 1000);
+      });
+    </script>
   </body>
 </html>

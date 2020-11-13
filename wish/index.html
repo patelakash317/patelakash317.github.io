@@ -316,7 +316,7 @@
           $('.dfsname').html("મારા");
           $('.footerbtn').attr('href', 'whatsapp://send?text=મેં તમારા માટે કંઈક મોકલ્યું છે વાદળી લીટીને ટચ કરો https://patelakash317.github.io/wish/?n= જુઓ');
         } else {
-          $('.footerbtn').attr('href', 'whatsapp://send?text='+name+' તમારા માટે  માટે કંઈક મોકલ્યું છે વાદળી લીટીને ટચ કરો https://patelakash317.github.io/wish/?n='+encodeURI(name)+' જુઓ');
+          $('.footerbtn').attr('href', 'whatsapp://send?text='+name+' તમારા માટે  માટે કંઈક મોકલ્યું છે વાદળી લીટીને ટચ કરો https://patelakash317.github.io/wish/?n='+encodeURIComponent(name)+' જુઓ');
           $('.dfsname').html(name);
         }
       }

@@ -208,7 +208,25 @@
 
       gtag('config', 'UA-166126782-1');
     </script>
+    <!--<script type="text/javascript">
+      $(document).ready(function() {
+        setTimeout(function(){
+          var my_awesome_script = document.createElement('script');
+          let script = 'https://platform.linkedin.com/badges/js/profile.js';
+          my_awesome_script.setAttribute('src', script);
+          my_awesome_script.async = true;
+          my_awesome_script.defer = true;
+          document.body.appendChild(my_awesome_script);
 
+          my_awesome_script.onload =  function(){
+            console.log("Success");
+          }
+          my_awesome_script.onerror = function() {
+            console.log("System is unable to load the script.");
+          }
+        }, 1000);
+      });
+    </script>-->
     
   </body>
 </html>

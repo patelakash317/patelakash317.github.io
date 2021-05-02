@@ -22,7 +22,7 @@
     color: #00ade0; }
     a:hover {
       color: #00c1fa; }
-
+ .short_preview { display: none; } /* many issues of linkedin new updates of Badge so hiding */
   #mainContainer {
     display: -webkit-box;
     display: -ms-flexbox;

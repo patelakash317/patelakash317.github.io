@@ -56,10 +56,33 @@
       -ms-flex-line-pack: center;
           align-content: center;
       padding: 20px; 
-      perspective: 125px;
-      animation: mymove 15s infinite; }
+      perspective: 1640px; }
+      
+      /* perspective: 125px;
+      animation: mymove 15s infinite; OLD PERSPECTIVE }
       @keyframes mymove {
         50% {perspective-origin: left ;}
+      }*/ 
+      @-webkit-keyframes moveOnZ {
+        from {
+          -webkit-transform: translateZ(-50px);
+                  transform: translateZ(-50px);
+        }
+        to {
+          -webkit-transform: translateZ(50px);
+                  transform: translateZ(50px);
+        }
+      }
+
+      @keyframes moveOnZ {
+        from {
+          -webkit-transform: translateZ(-50px);
+                  transform: translateZ(-50px);
+        }
+        to {
+          -webkit-transform: translateZ(50px);
+                  transform: translateZ(50px);
+        }
       }
       #mainContainer #mainContentBlock #mainContent {
         box-shadow: 1px 8px 19px rgba(51, 51, 51, 0.678);
@@ -88,7 +111,8 @@
           box-shadow: 1px 8px 19px rgba(51, 51, 51, 0.35);
           opacity: 0.95; 
           transition: all 2.2s ease!important; 
-          transform: rotateX(1.2deg); }
+          /* transform: rotateX(1.2deg); old perspective */
+          animation: 5s ease-in-out 5s infinite alternate none running moveOnZ; }
         @media only screen and (max-width: 768px) {
           /* For mobile phones: */
           #mainContainer #mainContentBlock #mainContent #avatarImageBlock {

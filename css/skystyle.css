@@ -147,8 +147,9 @@
             height: 38px;}
             #mainContainer #mainContentBlock #mainContent #introBox #linkBox li {
               margin: 5px;
-              border-radius: 15px;
-              display: inline; }
+              display: inline;
+              border-radius: 20px;
+              border: 5px solid #e6e6e6 !important; }
               #mainContainer #mainContentBlock #mainContent #introBox #linkBox li .link-icon {
                 background-color: #00ade0;
                 padding: 6px 4px;
